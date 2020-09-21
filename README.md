@@ -31,3 +31,15 @@ Then lastly, you need to symlink the component-compiler-utils into the vue-loade
 ```
 
 After that, run `npm run build`, edit your code to trigger a warning / error and watch those handlers work!
+
+## How was it made?
+
+Through a tiresome process of manually looking up every `process.env.NODE_ENV` reference and then checking if it was related to a warning, a performance optimization, and/or both. The goal of the fork is to disable the debug stuff that slows down Vue, but keep the debug information available.
+
+You will see a lot of this code in there now:
+
+```
+process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'handler'
+```
+
+Someone with a better understanding of the inner workings of Vue can probably do a much cleaner job. So consider this a proof of concept, highly tailored to our current needs.
