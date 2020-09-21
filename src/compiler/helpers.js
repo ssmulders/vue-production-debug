@@ -80,7 +80,7 @@ export function addHandler (
   // warn prevent and passive modifier
   /* istanbul ignore if */
   if (
-    process.env.NODE_ENV !== 'production' && warn &&
+    (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && warn &&
     modifiers.prevent && modifiers.passive
   ) {
     warn(

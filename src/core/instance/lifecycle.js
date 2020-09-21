@@ -146,7 +146,7 @@ export function mountComponent (
   vm.$el = el
   if (!vm.$options.render) {
     vm.$options.render = createEmptyVNode
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
       /* istanbul ignore if */
       if ((vm.$options.template && vm.$options.template.charAt(0) !== '#') ||
         vm.$options.el || el) {

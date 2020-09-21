@@ -119,7 +119,7 @@ export function createComponent (
   // if at this stage it's not a constructor or an async component factory,
   // reject.
   if (typeof Ctor !== 'function') {
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
       warn(`Invalid Component definition: ${String(Ctor)}`, context)
     }
     return

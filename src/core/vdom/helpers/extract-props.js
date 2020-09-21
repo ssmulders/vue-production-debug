@@ -26,7 +26,7 @@ export function extractPropsFromVNodeData (
   if (isDef(attrs) || isDef(props)) {
     for (const key in propOptions) {
       const altKey = hyphenate(key)
-      if (process.env.NODE_ENV !== 'production') {
+      if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
         const keyInLowerCase = key.toLowerCase()
         if (
           key !== keyInLowerCase &&

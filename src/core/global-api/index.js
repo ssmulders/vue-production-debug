@@ -22,7 +22,7 @@ export function initGlobalAPI (Vue: GlobalAPI) {
   // config
   const configDef = {}
   configDef.get = () => config
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
     configDef.set = () => {
       warn(
         'Do not replace the Vue.config object, set individual fields instead.'

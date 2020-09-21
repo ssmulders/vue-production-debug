@@ -5,7 +5,7 @@ import { warn, makeMap, isNative } from '../util/index'
 
 let initProxy
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
   const allowedGlobals = makeMap(
     'Infinity,undefined,NaN,isFinite,isNaN,' +
     'parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,' +
@@ -77,7 +77,6 @@ if (process.env.NODE_ENV !== 'production') {
 
   initProxy = function initProxy (vm) {
     if (hasProxy) {
-      // determine which proxy handler to use
       const options = vm.$options
       const handlers = options.render && options.render._withStripped
         ? getHandler

@@ -99,7 +99,7 @@ export default {
     }
 
     // warn multiple elements
-    if (process.env.NODE_ENV !== 'production' && children.length > 1) {
+    if ((process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && children.length > 1) {
       warn(
         '<transition> can only be used on a single element. Use ' +
         '<transition-group> for lists.',
@@ -110,7 +110,7 @@ export default {
     const mode: string = this.mode
 
     // warn invalid mode
-    if (process.env.NODE_ENV !== 'production' &&
+    if ((process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') &&
       mode && mode !== 'in-out' && mode !== 'out-in'
     ) {
       warn(

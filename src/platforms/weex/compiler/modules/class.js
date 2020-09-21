@@ -16,7 +16,7 @@ function transformNode (el: ASTElement, options: CompilerOptions) {
   const warn = options.warn || baseWarn
   const staticClass = getAndRemoveAttr(el, 'class')
   const { dynamic, classResult } = parseStaticClass(staticClass, options)
-  if (process.env.NODE_ENV !== 'production' && dynamic && staticClass) {
+  if ((process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && dynamic && staticClass) {
     warn(
       `class="${staticClass}": ` +
       'Interpolation inside attributes has been deprecated. ' +

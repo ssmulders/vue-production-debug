@@ -199,7 +199,7 @@ export function defineReactive (
  * already exist.
  */
 export function set (target: Array<any> | Object, key: any, val: any): any {
-  if (process.env.NODE_ENV !== 'production' &&
+  if ((process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') &&
     (isUndef(target) || isPrimitive(target))
   ) {
     warn(`Cannot set reactive property on undefined, null, or primitive value: ${(target: any)}`)
@@ -215,7 +215,7 @@ export function set (target: Array<any> | Object, key: any, val: any): any {
   }
   const ob = (target: any).__ob__
   if (target._isVue || (ob && ob.vmCount)) {
-    process.env.NODE_ENV !== 'production' && warn(
+    (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && warn(
       'Avoid adding reactive properties to a Vue instance or its root $data ' +
       'at runtime - declare it upfront in the data option.'
     )
@@ -234,7 +234,7 @@ export function set (target: Array<any> | Object, key: any, val: any): any {
  * Delete a property and trigger change if necessary.
  */
 export function del (target: Array<any> | Object, key: any) {
-  if (process.env.NODE_ENV !== 'production' &&
+  if ((process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') &&
     (isUndef(target) || isPrimitive(target))
   ) {
     warn(`Cannot delete reactive property on undefined, null, or primitive value: ${(target: any)}`)
@@ -245,7 +245,7 @@ export function del (target: Array<any> | Object, key: any) {
   }
   const ob = (target: any).__ob__
   if (target._isVue || (ob && ob.vmCount)) {
-    process.env.NODE_ENV !== 'production' && warn(
+    (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && warn(
       'Avoid deleting properties on a Vue instance or its root $data ' +
       '- just set it to null.'
     )

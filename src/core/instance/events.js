@@ -117,7 +117,7 @@ export function eventsMixin (Vue: Class<Component>) {
 
   Vue.prototype.$emit = function (event: string): Component {
     const vm: Component = this
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
       const lowerCaseEvent = event.toLowerCase()
       if (lowerCaseEvent !== event && vm._events[lowerCaseEvent]) {
         tip(

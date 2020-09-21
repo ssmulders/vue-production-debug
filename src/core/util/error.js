@@ -71,7 +71,7 @@ function globalHandleError (err, vm, info) {
 }
 
 function logError (err, vm, info) {
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production'  || process.env.WARNING_LEVEL !== 'none') {
     warn(`Error in ${info}: "${err.toString()}"`, vm)
   }
   /* istanbul ignore else */

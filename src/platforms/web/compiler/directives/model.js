@@ -22,7 +22,7 @@ export default function model (
   const tag = el.tag
   const type = el.attrsMap.type
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
     // inputs with type="file" are read only and setting the input's
     // value will throw an error.
     if (tag === 'input' && type === 'file') {
@@ -50,7 +50,7 @@ export default function model (
     genComponentModel(el, value, modifiers)
     // component v-model doesn't need extra runtime
     return false
-  } else if (process.env.NODE_ENV !== 'production') {
+  } else if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
     warn(
       `<${el.tag} v-model="${value}">: ` +
       `v-model is not supported on this element type. ` +
@@ -133,7 +133,7 @@ function genDefaultModel (
 
   // warn if v-bind:value conflicts with v-model
   // except for inputs with v-bind:type
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
     const value = el.attrsMap['v-bind:value'] || el.attrsMap[':value']
     const typeBinding = el.attrsMap['v-bind:type'] || el.attrsMap[':type']
     if (value && !typeBinding) {

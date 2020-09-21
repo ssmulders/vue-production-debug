@@ -105,7 +105,7 @@ export function enter (vnode: VNodeWithData, toggleDisplay: ?() => void) {
       : duration
   )
 
-  if (process.env.NODE_ENV !== 'production' && explicitEnterDuration != null) {
+  if ((process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && explicitEnterDuration != null) {
     checkDuration(explicitEnterDuration, 'enter', vnode)
   }
 
@@ -215,7 +215,7 @@ export function leave (vnode: VNodeWithData, rm: Function) {
       : duration
   )
 
-  if (process.env.NODE_ENV !== 'production' && isDef(explicitLeaveDuration)) {
+  if ((process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && isDef(explicitLeaveDuration)) {
     checkDuration(explicitLeaveDuration, 'leave', vnode)
   }
 

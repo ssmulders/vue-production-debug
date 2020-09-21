@@ -6,7 +6,7 @@ import { lifecycleMixin } from './lifecycle'
 import { warn } from '../util/index'
 
 function Vue (options) {
-  if (process.env.NODE_ENV !== 'production' &&
+  if ((process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') &&
     !(this instanceof Vue)
   ) {
     warn('Vue is a constructor and should be called with the `new` keyword')
