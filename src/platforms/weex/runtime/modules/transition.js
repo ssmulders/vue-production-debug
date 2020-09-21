@@ -239,7 +239,7 @@ function getEnterTargetState (el, stylesheet, startClass, endClass, activeClass)
     for (const key in startState) {
       targetState[key] = el.style[key]
       if (
-        process.env.NODE_ENV !== 'production' &&
+        (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') &&
         targetState[key] == null &&
         (!activeState || activeState[key] == null) &&
         (!endState || endState[key] == null)

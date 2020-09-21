@@ -11,7 +11,7 @@ export function preTransformVFor (el: ASTElement, options: WeexCompilerOptions) 
 
   const res = parseFor(exp)
   if (!res) {
-    if (process.env.NODE_ENV !== 'production' && options.warn) {
+    if ((process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && options.warn) {
       options.warn(`Invalid v-for expression: ${exp}`)
     }
     return

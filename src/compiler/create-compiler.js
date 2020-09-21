@@ -19,7 +19,7 @@ export function createCompilerCreator (baseCompile: Function): Function {
       }
 
       if (options) {
-        if (process.env.NODE_ENV !== 'production' && options.outputSourceRange) {
+        if ((process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && options.outputSourceRange ) {
           // $flow-disable-line
           const leadingSpaceLength = template.match(/^\s*/)[0].length
 

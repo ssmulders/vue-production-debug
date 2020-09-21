@@ -44,7 +44,7 @@ export default {
           children.push(c)
           map[c.key] = c
           ;(c.data || (c.data = {})).transition = transitionData
-        } else if (process.env.NODE_ENV !== 'production') {
+        } else if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
           const opts = c.componentOptions
           const name = opts
             ? (opts.Ctor.options.name || opts.tag)

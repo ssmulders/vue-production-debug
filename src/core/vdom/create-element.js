@@ -52,7 +52,7 @@ export function _createElement (
   normalizationType?: number
 ): VNode | Array<VNode> {
   if (isDef(data) && isDef((data: any).__ob__)) {
-    process.env.NODE_ENV !== 'production' && warn(
+    (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && warn(
       `Avoid using observed data object as vnode data: ${JSON.stringify(data)}\n` +
       'Always create fresh vnode data objects in each render!',
       context
@@ -68,7 +68,7 @@ export function _createElement (
     return createEmptyVNode()
   }
   // warn against non-primitive key
-  if (process.env.NODE_ENV !== 'production' &&
+  if ((process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') &&
     isDef(data) && isDef(data.key) && !isPrimitive(data.key)
   ) {
     if (!__WEEX__ || !('@binding' in data.key)) {
@@ -98,7 +98,7 @@ export function _createElement (
     ns = (context.$vnode && context.$vnode.ns) || config.getTagNamespace(tag)
     if (config.isReservedTag(tag)) {
       // platform built-in elements
-      if (process.env.NODE_ENV !== 'production' && isDef(data) && isDef(data.nativeOn)) {
+      if ((process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && isDef(data) && isDef(data.nativeOn)) {
         warn(
           `The .native modifier for v-on is only valid on components but it was used on <${tag}>.`,
           context

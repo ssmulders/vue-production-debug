@@ -101,7 +101,7 @@ export function resolveAsyncComponent (
     })
 
     const reject = once(reason => {
-      process.env.NODE_ENV !== 'production' && warn(
+      (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && warn(
         `Failed to resolve async component: ${String(factory)}` +
         (reason ? `\nReason: ${reason}` : '')
       )

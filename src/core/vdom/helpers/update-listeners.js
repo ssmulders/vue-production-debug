@@ -69,7 +69,7 @@ export function updateListeners (
       event.params = def.params
     }
     if (isUndef(cur)) {
-      process.env.NODE_ENV !== 'production' && warn(
+      (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && warn(
         `Invalid handler for event "${event.name}": got ` + String(cur),
         vm
       )

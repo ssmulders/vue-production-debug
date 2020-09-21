@@ -23,7 +23,7 @@ Vue.prototype.$mount = function (
 
   /* istanbul ignore if */
   if (el === document.body || el === document.documentElement) {
-    process.env.NODE_ENV !== 'production' && warn(
+    (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && warn(
       `Do not mount Vue to <html> or <body> - mount to normal elements instead.`
     )
     return this
@@ -38,7 +38,7 @@ Vue.prototype.$mount = function (
         if (template.charAt(0) === '#') {
           template = idToTemplate(template)
           /* istanbul ignore if */
-          if (process.env.NODE_ENV !== 'production' && !template) {
+          if ((process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && !template) {
             warn(
               `Template element not found or is empty: ${options.template}`,
               this
@@ -48,7 +48,7 @@ Vue.prototype.$mount = function (
       } else if (template.nodeType) {
         template = template.innerHTML
       } else {
-        if (process.env.NODE_ENV !== 'production') {
+        if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
           warn('invalid template option:' + template, this)
         }
         return this

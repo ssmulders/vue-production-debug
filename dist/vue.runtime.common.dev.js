@@ -4434,8 +4434,8 @@ var Watcher = function Watcher (
   } else {
     this.getter = parsePath(expOrFn);
     if (!this.getter) {
-      this.getter = noop;
-       warn(
+      this.getter = noop
+      () && warn(
         "Failed watching path: \"" + expOrFn + "\" " +
         'Watcher only accepts simple dot-delimited paths. ' +
         'For full control, use a function instead.',
@@ -4683,8 +4683,8 @@ function initData (vm) {
     ? getData(data, vm)
     : data || {};
   if (!isPlainObject(data)) {
-    data = {};
-     warn(
+    data = {}
+    ("development" !== 'production' ) && warn(
       'data functions should return an object:\n' +
       'https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function',
       vm

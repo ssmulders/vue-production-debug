@@ -3755,8 +3755,8 @@ function parse (
       }
 
       if (isForbiddenTag(element) && !isServerRendering()) {
-        element.forbidden = true;
-         warn$1(
+        element.forbidden = true
+        ("development" !== 'production' ) && warn$1(
           'Templates should only be responsible for mapping the state to the ' +
           'UI. Avoid placing tags with side-effects in your templates, such as ' +
           "<" + tag + ">" + ', as they will not be parsed.',
@@ -6284,7 +6284,7 @@ function createCompilerCreator (baseCompile) {
       };
 
       if (options) {
-        if ( options.outputSourceRange) {
+        if ( options.outputSourceRange ) {
           // $flow-disable-line
           var leadingSpaceLength = template.match(/^\s*/)[0].length;
 

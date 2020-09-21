@@ -149,7 +149,7 @@ export function createPatchFunction (backend) {
     const children = vnode.children
     const tag = vnode.tag
     if (isDef(tag)) {
-      if (process.env.NODE_ENV !== 'production') {
+      if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
         if (data && data.pre) {
           creatingElmInVPre++
         }
@@ -283,7 +283,7 @@ export function createPatchFunction (backend) {
 
   function createChildren (vnode, children, insertedVnodeQueue) {
     if (Array.isArray(children)) {
-      if (process.env.NODE_ENV !== 'production') {
+      if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
         checkDuplicateKeys(children)
       }
       for (let i = 0; i < children.length; ++i) {
@@ -417,7 +417,7 @@ export function createPatchFunction (backend) {
     // during leaving transitions
     const canMove = !removeOnly
 
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
       checkDuplicateKeys(newCh)
     }
 
@@ -555,7 +555,7 @@ export function createPatchFunction (backend) {
       if (isDef(oldCh) && isDef(ch)) {
         if (oldCh !== ch) updateChildren(elm, oldCh, ch, insertedVnodeQueue, removeOnly)
       } else if (isDef(ch)) {
-        if (process.env.NODE_ENV !== 'production') {
+        if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
           checkDuplicateKeys(ch)
         }
         if (isDef(oldVnode.text)) nodeOps.setTextContent(elm, '')
@@ -604,7 +604,7 @@ export function createPatchFunction (backend) {
       return true
     }
     // assert node match
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
       if (!assertNodeMatch(elm, vnode, inVPre)) {
         return false
       }
@@ -728,7 +728,7 @@ export function createPatchFunction (backend) {
             if (hydrate(oldVnode, vnode, insertedVnodeQueue)) {
               invokeInsertHook(vnode, insertedVnodeQueue, true)
               return oldVnode
-            } else if (process.env.NODE_ENV !== 'production') {
+            } else if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
               warn(
                 'The client-side rendered virtual DOM tree is not matching ' +
                 'server-rendered content. This is likely caused by incorrect ' +

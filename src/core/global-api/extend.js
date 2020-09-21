@@ -26,7 +26,7 @@ export function initExtend (Vue: GlobalAPI) {
     }
 
     const name = extendOptions.name || Super.options.name
-    if (process.env.NODE_ENV !== 'production' && name) {
+    if ((process.env.NODE_ENV !== 'production'  || process.env.WARNING_LEVEL !== 'none') && name) {
       validateComponentName(name)
     }
 

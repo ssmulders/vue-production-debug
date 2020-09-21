@@ -19,7 +19,7 @@ export function initInjections (vm: Component) {
     toggleObserving(false)
     Object.keys(result).forEach(key => {
       /* istanbul ignore else */
-      if (process.env.NODE_ENV !== 'production') {
+      if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
         defineReactive(vm, key, result[key], () => {
           warn(
             `Avoid mutating an injected value directly since the changes will be ` +
@@ -63,7 +63,7 @@ export function resolveInject (inject: any, vm: Component): ?Object {
           result[key] = typeof provideDefault === 'function'
             ? provideDefault.call(vm)
             : provideDefault
-        } else if (process.env.NODE_ENV !== 'production') {
+        } else if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
           warn(`Injection "${key}" not found`, vm)
         }
       }

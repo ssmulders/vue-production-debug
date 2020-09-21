@@ -4443,8 +4443,8 @@ var Watcher = function Watcher (
   } else {
     this.getter = parsePath(expOrFn);
     if (!this.getter) {
-      this.getter = noop;
-       warn(
+      this.getter = noop
+      () && warn(
         "Failed watching path: \"" + expOrFn + "\" " +
         'Watcher only accepts simple dot-delimited paths. ' +
         'For full control, use a function instead.',
@@ -4692,8 +4692,8 @@ function initData (vm) {
     ? getData(data, vm)
     : data || {};
   if (!isPlainObject(data)) {
-    data = {};
-     warn(
+    data = {}
+    ("development" !== 'production' ) && warn(
       'data functions should return an object:\n' +
       'https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function',
       vm
@@ -9762,8 +9762,8 @@ function parse (
       }
 
       if (isForbiddenTag(element) && !isServerRendering()) {
-        element.forbidden = true;
-         warn$2(
+        element.forbidden = true
+        ("development" !== 'production' ) && warn$2(
           'Templates should only be responsible for mapping the state to the ' +
           'UI. Avoid placing tags with side-effects in your templates, such as ' +
           "<" + tag + ">" + ', as they will not be parsed.',
@@ -11773,7 +11773,7 @@ function createCompilerCreator (baseCompile) {
       };
 
       if (options) {
-        if ( options.outputSourceRange) {
+        if ( options.outputSourceRange ) {
           // $flow-disable-line
           var leadingSpaceLength = template.match(/^\s*/)[0].length;
 
