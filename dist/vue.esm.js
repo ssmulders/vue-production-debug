@@ -612,6 +612,8 @@ var tip = noop;
 var generateComponentTrace = (noop); // work around flow check
 var formatComponentName = (noop);
 
+console.log('Debug 123');
+
 if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
   var hasConsole = typeof console !== 'undefined';
   var classifyRE = /(?:^|[-_])(\w)/g;
@@ -624,7 +626,8 @@ if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none
 
     if (config.warnHandler) {
       config.warnHandler.call(null, msg, vm, trace);
-    } else if (hasConsole && (!config.silent)) {
+    }
+    else if (hasConsole && (!config.silent)) {
       console.error(("[Vue warn]: " + msg + trace));
     }
   };
@@ -9779,8 +9782,8 @@ function parse (
       }
 
       if (isForbiddenTag(element) && !isServerRendering()) {
-        element.forbidden = true
-        (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && warn$2(
+        element.forbidden = true;
+        process.env.NODE_ENV !== 'production' && warn$2(
           'Templates should only be responsible for mapping the state to the ' +
           'UI. Avoid placing tags with side-effects in your templates, such as ' +
           "<" + tag + ">" + ', as they will not be parsed.',

@@ -251,7 +251,7 @@ export function parse (
 
       if (isForbiddenTag(element) && !isServerRendering()) {
         element.forbidden = true
-        (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') && warn(
+        process.env.NODE_ENV !== 'production' && warn(
           'Templates should only be responsible for mapping the state to the ' +
           'UI. Avoid placing tags with side-effects in your templates, such as ' +
           `<${tag}>` + ', as they will not be parsed.',
