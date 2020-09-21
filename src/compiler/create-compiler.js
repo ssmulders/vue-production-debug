@@ -59,7 +59,7 @@ export function createCompilerCreator (baseCompile: Function): Function {
       finalOptions.warn = warn
 
       const compiled = baseCompile(template.trim(), finalOptions)
-      if (process.env.NODE_ENV !== 'production') {
+      if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
         detectErrors(compiled.ast, warn)
       }
       compiled.errors = errors

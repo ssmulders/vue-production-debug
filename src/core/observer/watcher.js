@@ -72,7 +72,7 @@ export default class Watcher {
     this.newDeps = []
     this.depIds = new Set()
     this.newDepIds = new Set()
-    this.expression = process.env.NODE_ENV !== 'production'
+    this.expression = (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none')
       ? expOrFn.toString()
       : ''
     // parse expression for getter

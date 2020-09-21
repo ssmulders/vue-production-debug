@@ -40,7 +40,7 @@ function initVirtualComponent (options: Object = {}) {
   }
 
   /* istanbul ignore else */
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production' || process.env.WARNING_LEVEL !== 'none') {
     initProxy(vm)
   } else {
     vm._renderProxy = vm
