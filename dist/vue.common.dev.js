@@ -614,8 +614,6 @@ var tip = noop;
 var generateComponentTrace = (noop); // work around flow check
 var formatComponentName = (noop);
 
-console.log('Debug 123');
-
 {
   var hasConsole = typeof console !== 'undefined';
   var classifyRE = /(?:^|[-_])(\w)/g;
@@ -628,8 +626,7 @@ console.log('Debug 123');
 
     if (config.warnHandler) {
       config.warnHandler.call(null, msg, vm, trace);
-    }
-    else if (hasConsole && (!config.silent)) {
+    } else if (hasConsole && (!config.silent)) {
       console.error(("[Vue warn]: " + msg + trace));
     }
   };
